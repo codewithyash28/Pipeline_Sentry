@@ -1,0 +1,6 @@
+{
+  "name": "fivetran_mcp",
+  "version": "1.0.0",
+  "description": "Credentials & entry points for Fivetran",
+  "endpoints": []
+}

@@ -1,0 +1,5 @@
+# For hosting the polling service
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pipeline-sentry-poller

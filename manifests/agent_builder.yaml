@@ -1,0 +1,3 @@
+# Vertex AI Agent configuration
+name: pipeline-sentry-agent
+description: First responder and self-healing agent for data pipelines
