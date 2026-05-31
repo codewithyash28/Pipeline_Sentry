@@ -7,7 +7,20 @@
 Data engineers suffer from alert fatigue. When a pipeline fails at 3 AM due to a trivial issue (like an expired Stripe API key in Fivetran), an engineer shouldn't have to wake up just to rotate a credential and click "retry."
 
 ## 🤖 The Solution
-Pipeline Sentry acts as an autonomous First Responder. Leveraging **Google Cloud Agent Builder** and **Gemini 1.5**, it uses the **Model Context Protocol (MCP)** to interact directly with Fivetran and GCP Secret Manager.
+Pipeline Sentry acts as an autonomous First Responder. Leveraging **Google Cloud Agent Builder** and **Gemini 2.0**, it uses the **Model Context Protocol (MCP)** to interact directly with Fivetran and GCP Secret Manager.
+
+### 🏗️ Architecture
+```mermaid
+graph TD
+    A[Fivetran Sync Failure] --> B{Pipeline Sentry}
+    B --> C[Gemini Triage Agent]
+    C --> D{HITL Approval Gate}
+    D -- Requires Approval --> E[Slack Interactive Card]
+    E -- Approved --> F[Remediation via MCP]
+    D -- Auto-approve --> F
+    F --> G[GCP Secret Manager / Fivetran API]
+    G --> H[Re-sync & Notify]
+```
 
 1. **Detect:** Monitors Fivetran for sync failures via the Fivetran MCP.
 2. **Diagnose:** Reads error logs to identify the root cause (e.g., Expired API Key).
