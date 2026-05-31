@@ -1,0 +1,12 @@
+[
+  {
+    "connector_id": "stripe_connector",
+    "error_message": "401 Unauthorized: Invalid API Key",
+    "timestamp": "2023-10-27T10:00:00Z"
+  },
+  {
+    "connector_id": "salesforce_connector",
+    "error_message": "ETIMEDOUT: Connection timed out",
+    "timestamp": "2023-10-27T10:05:00Z"
+  }
+]
