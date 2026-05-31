@@ -22,6 +22,11 @@ graph TD
     G --> H[Re-sync & Notify]
 ```
 
+### 📸 Visual Proof: Before & After
+| 🔴 Raw Fivetran Error (Before) | 🟢 Pipeline Sentry Alert (After) |
+| :--- | :--- |
+| `⚠️ ERROR: Connector sync failed. Code: 401. Message: Unauthorized access token expired at 2026-05-31T14:22:11Z. Traceback: ...` | **🚨 Pipeline Failure Triaged**<br>Core issue: Expired Stripe API Key<br>Action: New key fetched from Secret Manager.<br>`[Approve Rotation]` `[Abort Run]` |
+
 1. **Detect:** Monitors Fivetran for sync failures via the Fivetran MCP.
 2. **Diagnose:** Reads error logs to identify the root cause (e.g., Expired API Key).
 3. **Self-Heal:** Uses Secret Manager to rotate credentials and updates the Fivetran connector configuration.
